@@ -1,0 +1,106 @@
+<!-- @dsCard group="Brand" viewport="760x300" name="Clear Space & Min Size" subtitle="Zona de proteção e tamanho mínimo do logo" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-offwhite); font-family: var(--font-primary); padding: 24px; }
+    .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; align-items: stretch; }
+
+    .panel {
+      background: var(--color-white);
+      border: 1px solid var(--color-green-100);
+      border-radius: 4px;
+      padding: 18px;
+    }
+    .label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--color-green-500); margin-bottom: 4px;
+    }
+    .desc { font-size: 11px; color: var(--color-gray-600); line-height: 1.4; margin-bottom: 16px; }
+
+    /* clear space diagram */
+    .cs-stage {
+      display: flex; align-items: center; justify-content: center;
+      padding: 8px;
+    }
+    .cs-box {
+      position: relative;
+      padding: 30px;
+      border: 1px dashed var(--color-gold-500);
+      background:
+        repeating-linear-gradient(45deg, var(--color-gold-50) 0, var(--color-gold-50) 6px, #fff 6px, #fff 12px);
+    }
+    .cs-inner {
+      background: #fff;
+      padding: 6px 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cs-inner img { height: 40px; display: block; }
+    .cs-tick {
+      position: absolute;
+      font-size: 13px; font-weight: 700; color: var(--color-gold-500);
+      font-family: var(--font-mono, monospace);
+    }
+    .cs-tick.top { top: 9px; left: 50%; transform: translateX(-50%); }
+    .cs-tick.left { left: 9px; top: 50%; transform: translateY(-50%); }
+    .cs-note { font-size: 10px; color: var(--color-gray-400); text-align: center; margin-top: 12px; }
+
+    /* min size */
+    .sizes { display: flex; align-items: flex-end; gap: 22px; margin-bottom: 14px; }
+    .size-item { text-align: center; }
+    .size-item img { display: block; margin: 0 auto 8px; }
+    .size-cap { font-size: 10px; color: var(--color-gray-600); line-height: 1.3; }
+    .size-cap strong { color: var(--color-black); }
+    .min-row {
+      display: flex; align-items: center; gap: 8px;
+      border-top: 1px solid var(--color-green-100); padding-top: 12px;
+    }
+    .min-row .dot { width: 7px; height: 7px; border-radius: 100px; background: var(--color-error); flex-shrink: 0; }
+    .min-row .t { font-size: 11px; color: var(--color-gray-600); line-height: 1.35; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Clear space -->
+    <div class="panel">
+      <div class="label">Zona de proteção</div>
+      <div class="desc">Mantenha um espaço livre ao redor do logo igual à altura do símbolo (×). Nenhum texto, imagem ou elemento gráfico deve invadir essa área.</div>
+      <div class="cs-stage">
+        <div class="cs-box">
+          <span class="cs-tick top">&darr; x &darr;</span>
+          <span class="cs-tick left">x</span>
+          <div class="cs-inner">
+            <img src="../assets/logos/LogoFinal.png" alt="BioBrz logo com zona de proteção">
+          </div>
+        </div>
+      </div>
+      <div class="cs-note">x = altura do símbolo da marca</div>
+    </div>
+
+    <!-- Minimum size -->
+    <div class="panel">
+      <div class="label">Tamanho mínimo</div>
+      <div class="desc">Abaixo destes limites a legibilidade é comprometida. Nunca reduza além do permitido.</div>
+      <div class="sizes">
+        <div class="size-item">
+          <img src="../assets/logos/LogoFinal.png" alt="" style="height: 30px;">
+          <div class="size-cap"><strong>Digital</strong><br>120&nbsp;px de largura</div>
+        </div>
+        <div class="size-item">
+          <img src="../assets/logos/LogoFinal.png" alt="" style="height: 18px;">
+          <div class="size-cap"><strong>Impresso</strong><br>25&nbsp;mm de largura</div>
+        </div>
+      </div>
+      <div class="min-row">
+        <span class="dot"></span>
+        <span class="t">Para aplicações menores, use apenas o símbolo isolado.</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

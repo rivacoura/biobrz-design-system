@@ -1,0 +1,60 @@
+<!-- @dsCard group="Brand" viewport="700x220" name="Graphic Elements" subtitle="Símbolo em três contextos: cores, branca e preta" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-primary); padding: 0; overflow: hidden; }
+    .panels { display: flex; height: 220px; }
+    .panel {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 28px; gap: 14px;
+    }
+    .divider { width: 1px; flex-shrink: 0; }
+    img { height: 60px; object-fit: contain; max-width: 85%; display: block; }
+    .label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.10em;
+      text-transform: uppercase; text-align: center;
+    }
+    .sub { font-size: 11px; font-weight: 400; text-align: center; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div class="panels">
+
+    <div class="panel" style="background: #ffffff;">
+      <img src="../assets/logos/LogoFinal.png" alt="BioBrz — versão colorida">
+      <div class="label" style="color: #8A8A8A;">Versão Colorida</div>
+      <div class="sub" style="color: #8A8A8A;">Uso principal — fundo branco</div>
+    </div>
+
+    <div class="divider" style="background: #e8e8e8;"></div>
+
+    <div class="panel" style="background: #3E7853;">
+      <img src="../assets/logos/LogoFinalBranca.png" alt="BioBrz — versão branca">
+      <div class="label" style="color: rgba(255,255,255,0.55);">Versão Branca</div>
+      <div class="sub" style="color: rgba(255,255,255,0.45);">Fundos escuros ou verdes</div>
+    </div>
+
+    <div class="divider" style="background: rgba(255,255,255,0.15);"></div>
+
+    <div class="panel" style="background: #000000;">
+      <img src="../assets/logos/LogoFinalBranca.png" alt="BioBrz — branca sobre preto">
+      <div class="label" style="color: rgba(255,255,255,0.45);">Sobre Preto</div>
+      <div class="sub" style="color: rgba(255,255,255,0.3);">Alta autoridade</div>
+    </div>
+
+    <div class="divider" style="background: #e8e8e8;"></div>
+
+    <div class="panel" style="background: #ffffff;">
+      <img src="../assets/logos/LogoFinalPreta.png" alt="BioBrz — versão preta">
+      <div class="label" style="color: #8A8A8A;">Versão Preta</div>
+      <div class="sub" style="color: #8A8A8A;">Impressão, bordado</div>
+    </div>
+
+  </div>
+</body>
+</html>

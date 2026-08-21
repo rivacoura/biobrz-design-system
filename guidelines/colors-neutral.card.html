@@ -1,0 +1,62 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Neutral Palette" subtitle="Off-white warm background, pure black, and grays" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f0f0f0; font-family: var(--font-primary); padding: 24px; }
+    .row { display: flex; gap: 8px; }
+    .label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px; color: var(--color-gray-600); }
+    .hex   { font-size: 12px; font-weight: 500; color: var(--color-black); margin-top: 2px; }
+    .name  { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gray-400); margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div style="display:flex;gap:48px;">
+    <div>
+      <div class="name">Especiais</div>
+      <div class="row">
+        <div>
+          <div style="height:80px;width:80px;border-radius:2px;background:var(--color-black);"></div>
+          <div class="label">Preto</div><div class="hex">#000000</div>
+        </div>
+        <div>
+          <div style="height:80px;width:80px;border-radius:2px;background:var(--color-offwhite);border:1px solid #ddd;"></div>
+          <div class="label">Off-White</div><div class="hex">#F5F1E6</div>
+        </div>
+        <div>
+          <div style="height:80px;width:80px;border-radius:2px;background:var(--color-white);border:1px solid #ddd;"></div>
+          <div class="label">Branco</div><div class="hex">#FFFFFF</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="name">Escala de Cinza</div>
+      <div class="row">
+        <div>
+          <div style="height:80px;width:60px;border-radius:2px;background:var(--color-gray-800);"></div>
+          <div class="label">800</div><div class="hex">#1A1A1A</div>
+        </div>
+        <div>
+          <div style="height:80px;width:60px;border-radius:2px;background:var(--color-gray-600);"></div>
+          <div class="label">600</div><div class="hex">#4A4A4A</div>
+        </div>
+        <div>
+          <div style="height:80px;width:60px;border-radius:2px;background:var(--color-gray-400);"></div>
+          <div class="label">400</div><div class="hex">#8A8A8A</div>
+        </div>
+        <div>
+          <div style="height:80px;width:60px;border-radius:2px;background:var(--color-gray-200);"></div>
+          <div class="label">200</div><div class="hex">#D4D4D4</div>
+        </div>
+        <div>
+          <div style="height:80px;width:60px;border-radius:2px;background:var(--color-gray-100);border:1px solid #eee;"></div>
+          <div class="label">100</div><div class="hex">#F0F0F0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

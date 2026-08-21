@@ -1,0 +1,35 @@
+<!-- @dsCard group="Colors" viewport="700x200" name="Semantic Colors" subtitle="Aliases: surface, text, border, CTA, service lines" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-offwhite); font-family: var(--font-primary); padding: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .item { display: flex; flex-direction: column; gap: 6px; }
+    .swatch { height: 48px; border-radius: 2px; }
+    .token { font-size: 10px; font-weight: 600; color: var(--color-gray-600); font-family: monospace; }
+    .desc  { font-size: 10px; color: var(--color-gray-400); }
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gray-400); margin-bottom: 10px; margin-top: 16px; }
+    .section-label:first-child { margin-top: 0; }
+  </style>
+</head>
+<body>
+  <div class="section-label">Superfícies</div>
+  <div class="grid" style="grid-template-columns: repeat(5,1fr)">
+    <div class="item"><div class="swatch" style="background:var(--color-surface-page);border:1px solid #ddd;"></div><div class="token">--surface-page</div></div>
+    <div class="item"><div class="swatch" style="background:var(--color-surface-card);border:1px solid #ddd;"></div><div class="token">--surface-card</div></div>
+    <div class="item"><div class="swatch" style="background:var(--color-surface-inverse);"></div><div class="token">--surface-inverse</div></div>
+    <div class="item"><div class="swatch" style="background:var(--color-surface-dark);"></div><div class="token">--surface-dark</div></div>
+    <div class="item"><div class="swatch" style="background:var(--color-surface-accent);"></div><div class="token">--surface-accent</div></div>
+  </div>
+  <div class="section-label" style="margin-top:18px;">Serviços</div>
+  <div class="grid" style="grid-template-columns: repeat(3,1fr)">
+    <div class="item"><div class="swatch" style="background:var(--color-service-tax);"></div><div class="token">--service-tax</div><div class="desc">Tax · Tributário</div></div>
+    <div class="item"><div class="swatch" style="background:var(--color-service-advisory);"></div><div class="token">--service-advisory</div><div class="desc">Advisory · Contábil</div></div>
+    <div class="item"><div class="swatch" style="background:var(--color-service-audit);"></div><div class="token">--service-audit</div><div class="desc">Audit · Independente</div></div>
+  </div>
+</body>
+</html>

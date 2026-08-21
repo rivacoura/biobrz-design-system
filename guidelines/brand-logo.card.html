@@ -1,0 +1,64 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Logo Usage" subtitle="Versão colorida · branca · preta — fundos corretos" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-primary); padding: 0; overflow: hidden; }
+    .panels { display: flex; height: 200px; }
+    .panel {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 24px; gap: 12px;
+    }
+    .divider { width: 1px; flex-shrink: 0; }
+    img { height: 56px; object-fit: contain; max-width: 85%; display: block; }
+    .label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.10em;
+      text-transform: uppercase; text-align: center;
+    }
+    .sub { font-size: 11px; text-align: center; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div class="panels">
+
+    <!-- Color logo on pure white -->
+    <div class="panel" style="background: #ffffff;">
+      <img src="../assets/logos/LogoFinal.png" alt="BioBrz — colorida">
+      <div class="label" style="color: #8A8A8A;">Versão Colorida</div>
+      <div class="sub" style="color: #8A8A8A;">Fundo branco</div>
+    </div>
+
+    <div class="divider" style="background: #e8e8e8;"></div>
+
+    <!-- White logo on forest green -->
+    <div class="panel" style="background: #3E7853;">
+      <img src="../assets/logos/LogoFinalBranca.png" alt="BioBrz — branca">
+      <div class="label" style="color: rgba(255,255,255,0.55);">Versão Branca</div>
+      <div class="sub" style="color: rgba(255,255,255,0.4);">Fundo verde</div>
+    </div>
+
+    <div class="divider" style="background: rgba(255,255,255,0.15);"></div>
+
+    <!-- White logo on black -->
+    <div class="panel" style="background: #000000;">
+      <img src="../assets/logos/LogoFinalBranca.png" alt="BioBrz — branca sobre preto">
+      <div class="label" style="color: rgba(255,255,255,0.45);">Versão Branca</div>
+      <div class="sub" style="color: rgba(255,255,255,0.3);">Fundo preto</div>
+    </div>
+
+    <div class="divider" style="background: #e8e8e8;"></div>
+
+    <!-- Black logo on pure white -->
+    <div class="panel" style="background: #ffffff;">
+      <img src="../assets/logos/LogoFinalPreta.png" alt="BioBrz — preta">
+      <div class="label" style="color: #8A8A8A;">Versão Preta</div>
+      <div class="sub" style="color: #8A8A8A;">Monocromático</div>
+    </div>
+
+  </div>
+</body>
+</html>

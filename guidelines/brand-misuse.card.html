@@ -1,0 +1,150 @@
+<!-- @dsCard group="Brand" viewport="760x520" name="Logo Misuse" subtitle="O que NÃO fazer com a marca — usos proibidos" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-offwhite); font-family: var(--font-primary); padding: 24px; }
+
+    .head { margin-bottom: 18px; }
+    .head .kicker {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--color-error); margin-bottom: 6px;
+    }
+    .head .title { font-size: 18px; font-weight: 700; color: var(--color-black); }
+    .head .sub { font-size: 12px; color: var(--color-gray-600); margin-top: 4px; line-height: 1.4; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .tile {
+      background: var(--color-white);
+      border: 1px solid var(--color-green-100);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .stage {
+      position: relative;
+      height: 110px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 18px;
+      overflow: hidden;
+    }
+    .stage img { height: 38px; object-fit: contain; max-width: 80%; display: block; }
+
+    .badge {
+      position: absolute; top: 8px; right: 8px;
+      width: 22px; height: 22px; border-radius: 100px;
+      background: var(--color-error); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; line-height: 1;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+      z-index: 2;
+    }
+    .caption {
+      border-top: 1px solid var(--color-green-100);
+      padding: 10px 12px 12px;
+    }
+    .caption .no {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--color-error); margin-bottom: 3px;
+    }
+    .caption .desc { font-size: 11px; color: var(--color-gray-600); line-height: 1.35; }
+
+    /* busy / striped placeholder background */
+    .busy {
+      background-image: repeating-linear-gradient(45deg,
+        #3E7853 0, #3E7853 10px, #5A9070 10px, #5A9070 20px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="head">
+    <div class="kicker">Usos Proibidos</div>
+    <div class="title">O que não fazer com a marca</div>
+    <div class="sub">A integridade do logo é inegociável. Nunca aplique nenhuma destas alterações.</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- 1. Distort -->
+    <div class="tile">
+      <div class="stage">
+        <span class="badge">&times;</span>
+        <img src="../assets/logos/LogoFinal.png" alt="" style="transform: scaleX(0.5);">
+      </div>
+      <div class="caption">
+        <div class="no">Não distorça</div>
+        <div class="desc">Nunca estique, comprima ou altere as proporções.</div>
+      </div>
+    </div>
+
+    <!-- 2. Rotate -->
+    <div class="tile">
+      <div class="stage">
+        <span class="badge">&times;</span>
+        <img src="../assets/logos/LogoFinal.png" alt="" style="transform: rotate(-13deg);">
+      </div>
+      <div class="caption">
+        <div class="no">Não gire</div>
+        <div class="desc">Mantenha sempre o logo na horizontal, sem inclinação.</div>
+      </div>
+    </div>
+
+    <!-- 3. Recolor -->
+    <div class="tile">
+      <div class="stage">
+        <span class="badge">&times;</span>
+        <img src="../assets/logos/LogoFinal.png" alt="" style="filter: hue-rotate(150deg) saturate(2.2);">
+      </div>
+      <div class="caption">
+        <div class="no">Não altere as cores</div>
+        <div class="desc">Use apenas as versões oficiais: colorida, branca ou preta.</div>
+      </div>
+    </div>
+
+    <!-- 4. Effects / shadow -->
+    <div class="tile">
+      <div class="stage">
+        <span class="badge">&times;</span>
+        <img src="../assets/logos/LogoFinal.png" alt="" style="filter: drop-shadow(4px 6px 3px rgba(0,0,0,0.45));">
+      </div>
+      <div class="caption">
+        <div class="no">Não aplique efeitos</div>
+        <div class="desc">Sem sombras, brilhos, gradientes, contornos ou 3D.</div>
+      </div>
+    </div>
+
+    <!-- 5. Low-contrast background -->
+    <div class="tile">
+      <div class="stage" style="background: var(--color-green-500);">
+        <span class="badge">&times;</span>
+        <img src="../assets/logos/LogoFinal.png" alt="">
+      </div>
+      <div class="caption">
+        <div class="no">Não use em baixo contraste</div>
+        <div class="desc">A versão colorida some sobre o verde. Prefira a branca.</div>
+      </div>
+    </div>
+
+    <!-- 6. Busy background -->
+    <div class="tile">
+      <div class="stage busy">
+        <span class="badge">&times;</span>
+        <img src="../assets/logos/LogoFinal.png" alt="">
+      </div>
+      <div class="caption">
+        <div class="no">Não use sobre fundo atarefado</div>
+        <div class="desc">Evite padrões e imagens que comprometam a leitura.</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

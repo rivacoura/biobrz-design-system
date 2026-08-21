@@ -1,0 +1,148 @@
+<!-- @dsCard group="Brand" viewport="760x640" name="AI Photo Prompts" subtitle="Prompts para Midjourney · DALL·E · Firefly — dois direcionamentos" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-offwhite); font-family: var(--font-primary); padding: 24px; }
+
+    .dna-block {
+      background: var(--color-black); border-radius: 4px; padding: 14px 16px;
+      margin-bottom: 18px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .dna-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--color-gold-400);
+      white-space: nowrap; padding-top: 2px; min-width: 60px;
+    }
+    .dna-code {
+      font-family: var(--font-mono, 'Courier New', monospace);
+      font-size: 10px; color: rgba(255,255,255,0.75); line-height: 1.6;
+    }
+    .dna-neg { color: rgba(255,255,255,0.38); font-size: 9.5px; margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px; }
+
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .dir-head {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 10px;
+      padding-bottom: 6px; border-bottom: 2px solid;
+    }
+    .dir-head-1 { color: var(--color-black); border-color: var(--color-black); }
+    .dir-head-2 { color: var(--color-green-500); border-color: var(--color-green-500); }
+
+    .prompt-item { margin-bottom: 10px; }
+    .prompt-code {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--color-gray-400); margin-bottom: 3px;
+    }
+    .prompt-title { font-size: 11px; font-weight: 700; color: var(--color-black); margin-bottom: 4px; }
+    .prompt-block {
+      background: var(--color-white); border: 1px solid var(--color-green-100);
+      border-radius: 3px; padding: 8px 10px;
+      font-family: var(--font-mono, 'Courier New', monospace);
+      font-size: 9px; color: var(--color-gray-600); line-height: 1.55;
+    }
+
+    .notes {
+      margin-top: 16px; background: var(--color-green-50);
+      border: 1px solid var(--color-green-100); border-radius: 4px;
+      padding: 12px 14px;
+    }
+    .notes-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--color-green-500); margin-bottom: 8px;
+    }
+    .notes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .note-item { font-size: 10px; color: var(--color-gray-600); line-height: 1.4; }
+    .note-item strong { color: var(--color-black); }
+  </style>
+</head>
+<body>
+
+  <!-- DNA Block -->
+  <div class="dna-block">
+    <div class="dna-label">DNA Visual</div>
+    <div>
+      <div class="dna-code">shot on Sony A7IV, 50mm f/1.4, shallow depth of field, cinematic color grading with deep forest-green and amber tones, warm off-white highlights, premium corporate atmosphere, refined and restrained, editorial quality, natural film grain, high-end commercial photography, --ar 4:5 --style raw</div>
+      <div class="dna-code dna-neg">Negative: no cartoon, no illustration, no stock-photo cheesiness, no exaggerated smiles, no clutter, no neon, no oversaturation, no text, no logos</div>
+    </div>
+  </div>
+
+  <div class="cols">
+
+    <!-- DIRECIONAMENTO 1 -->
+    <div>
+      <div class="dir-head dir-head-1">Dir. 01 — O Decisor em Movimento</div>
+
+      <div class="prompt-item">
+        <div class="prompt-code">1A · Olhar Focado</div>
+        <div class="prompt-title">Close — detalhe</div>
+        <div class="prompt-block">Extreme close-up of a focused executive's eyes behind modern glasses, reflection of financial data glowing in the lenses, dramatic side lighting, deep shadows, forest-green and amber color grade, intense concentration, technical authority</div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-code">1B · Profissional que Age</div>
+        <div class="prompt-title">Corpo inteiro, escritório</div>
+        <div class="prompt-block">Confident executive in tailored dark navy suit, glass-walled office, holding a tablet mid-action, soft window light, modern architectural lines, calm focused expression, urban skyline blurred, cool cinematic tone with warm highlights</div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-code">1C · Perfil Estratégico</div>
+        <div class="prompt-title">Retrato lateral</div>
+        <div class="prompt-block">Side profile portrait of a sharp decision-maker looking forward with determination, modern office blurred background, dramatic directional lighting, deep contrast, premium corporate setting, expression of focus and control, muted green and amber palette</div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-code">1E · Detalhe das Mãos</div>
+        <div class="prompt-title">Documento / caneta</div>
+        <div class="prompt-block">Close-up of experienced hands annotating a financial document with a premium pen, soft warm desk lamp, dark surroundings, precision and attention to detail, amber accent, shallow focus</div>
+      </div>
+    </div>
+
+    <!-- DIRECIONAMENTO 2 -->
+    <div>
+      <div class="dir-head dir-head-2">Dir. 02 — A Escolha Certa</div>
+
+      <div class="prompt-item">
+        <div class="prompt-code">2A · Maturidade Confiante</div>
+        <div class="prompt-title">Retrato urbano</div>
+        <div class="prompt-block">Mature distinguished man in his 50s, grey hair and beard, elegant cream turtleneck under soft grey-green wool blazer, relaxed confident smile, modern city architecture softly blurred, golden natural light, open approachable posture, premium business-casual</div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-code">2B · Tranquilidade Premium</div>
+        <div class="prompt-title">Ambiente interno, luz natural</div>
+        <div class="prompt-block">Confident professional in his late 40s sitting relaxed in a bright modern lounge, navy blazer over white tee, holding a laptop, genuine relaxed smile, large windows with soft natural daylight, warm off-white tones, sense of ease and being in good hands</div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-code">2C · Visão e Direção</div>
+        <div class="prompt-title">Olhar para cima</div>
+        <div class="prompt-block">Silver-haired executive in refined dark blazer and sage-green shirt, holding a tablet, looking upward with calm optimism, modern glass building, bright natural light, clean architectural background, mature confidence, aspirational and serene tone</div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-code">2D · Parceria</div>
+        <div class="prompt-title">Dois perfis — reunião</div>
+        <div class="prompt-block">Trusted senior advisor and client in conversation across a bright minimalist table, warm natural light from large windows, high-end business-casual, relaxed engaged body language, sense of partnership and trust, soft off-white and green tones</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Notes -->
+  <div class="notes">
+    <div class="notes-label">Notas de uso</div>
+    <div class="notes-grid">
+      <div class="note-item"><strong>Aspect ratios:</strong> 4:5 para feed/post · 9:16 para stories · 16:9 para site · 3:2 para banner</div>
+      <div class="note-item"><strong>Elenco:</strong> varie idade, etnia e gênero. Priorize perfis 40–60 anos para o público decisor de alto porte.</div>
+      <div class="note-item"><strong>Ajuste fino:</strong> acrescente <code>--stylize 250</code> para realismo controlado; reduza para <code>--stylize 100</code> se artificial demais.</div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!-- @dsCard group="Components" viewport="700x520" name="Core Components" subtitle="Button, Badge, Card, Input, ServiceCard" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-offwhite); font-family: var(--font-primary); padding: 24px; }
+    .section { margin-bottom: 24px; }
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gray-400); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--color-green-100); }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { Button, Badge, Card, Input, ServiceCard } = window.BIOBRZDesignSystem_d13c3c;
+
+    function Demo() {
+      return (
+        <div>
+          {/* Buttons */}
+          <div className="section">
+            <div className="section-label">Button</div>
+            <div className="row">
+              <Button variant="primary">Fale Conosco</Button>
+              <Button variant="accent">Solicitar Diagnóstico</Button>
+              <Button variant="outline">Saiba Mais</Button>
+              <Button variant="ghost">Ver Todos →</Button>
+              <Button variant="dark">Entrar</Button>
+              <Button disabled>Indisponível</Button>
+            </div>
+            <div className="row" style={{marginTop:'8px'}}>
+              <Button size="sm" variant="primary">Pequeno</Button>
+              <Button size="md" variant="primary">Médio</Button>
+              <Button size="lg" variant="primary">Grande</Button>
+              <Button size="md" variant="outline-light" style={{background:'var(--color-green-500)',padding:'8px 16px'}}>Outline Light</Button>
+            </div>
+          </div>
+
+          {/* Badges */}
+          <div className="section">
+            <div className="section-label">Badge</div>
+            <div className="row">
+              <Badge variant="primary">Tax</Badge>
+              <Badge variant="accent">Advisory</Badge>
+              <Badge variant="sky">Audit</Badge>
+              <Badge variant="dark">15 Anos</Badge>
+              <Badge variant="subtle-green">Tributário</Badge>
+              <Badge variant="subtle-gold">Contábil</Badge>
+              <Badge variant="subtle-blue">Auditoria</Badge>
+            </div>
+          </div>
+
+          {/* Cards */}
+          <div className="section">
+            <div className="section-label">Card</div>
+            <div className="row" style={{alignItems:'stretch'}}>
+              <Card style={{flex:1,minWidth:120}} padding="sm">
+                <div style={{fontSize:12,fontWeight:600,color:'var(--color-black)'}}>Default</div>
+                <div style={{fontSize:11,color:'var(--color-gray-400)',marginTop:4}}>White + border</div>
+              </Card>
+              <Card variant="filled" style={{flex:1,minWidth:120}} padding="sm">
+                <div style={{fontSize:12,fontWeight:600,color:'#fff'}}>Filled</div>
+                <div style={{fontSize:11,color:'rgba(255,255,255,0.6)',marginTop:4}}>Green</div>
+              </Card>
+              <Card variant="dark" style={{flex:1,minWidth:120}} padding="sm">
+                <div style={{fontSize:12,fontWeight:600,color:'#fff'}}>Dark</div>
+                <div style={{fontSize:11,color:'rgba(255,255,255,0.5)',marginTop:4}}>Black</div>
+              </Card>
+              <Card variant="gold" style={{flex:1,minWidth:120}} padding="sm">
+                <div style={{fontSize:12,fontWeight:600,color:'#000'}}>Gold</div>
+                <div style={{fontSize:11,color:'rgba(0,0,0,0.5)',marginTop:4}}>Accent</div>
+              </Card>
+              <Card hover accent="var(--color-gold-500)" style={{flex:1,minWidth:120}} padding="sm">
+                <div style={{fontSize:12,fontWeight:600}}>Hover + Accent</div>
+                <div style={{fontSize:11,color:'var(--color-gray-400)',marginTop:4}}>Gold bar</div>
+              </Card>
+            </div>
+          </div>
+
+          {/* Input */}
+          <div className="section">
+            <div className="section-label">Input</div>
+            <div className="row" style={{alignItems:'flex-start'}}>
+              <div style={{flex:1,minWidth:150}}>
+                <Input label="Nome da Empresa" placeholder="Ex: BioBrz" />
+              </div>
+              <div style={{flex:1,minWidth:150}}>
+                <Input label="E-mail" type="email" required helper="Retornaremos seu contato" />
+              </div>
+              <div style={{flex:1,minWidth:150}}>
+                <Input label="Faturamento" error="Campo obrigatório" />
+              </div>
+              <div style={{flex:1,minWidth:150}}>
+                <Input label="Telefone" disabled value="+55 61 9000-0000" />
+              </div>
+            </div>
+          </div>
+
+          {/* ServiceCard */}
+          <div className="section">
+            <div className="section-label">ServiceCard</div>
+            <div className="row" style={{alignItems:'stretch'}}>
+              <ServiceCard
+                service="tax"
+                overline="Consultoria Tributária"
+                title="Tax"
+                description="O imposto certo libera o crescimento."
+                cta="Saiba Mais"
+                style={{flex:1,minWidth:160,background:'rgb(236,242,237)'}}
+              />
+              <ServiceCard
+                service="advisory"
+                overline="Contabilidade Consultiva"
+                title="Advisory"
+                description="Números que orientam. Contabilidade que decide."
+                cta="Saiba Mais"
+                variant="filled"
+                style={{flex:1,minWidth:160}}
+              />
+              <ServiceCard
+                service="audit"
+                overline="Auditoria Independente"
+                title="Audit"
+                description="Credibilidade que o mercado reconhece."
+                cta="Saiba Mais"
+                variant="sky"
+                style={{flex:1,minWidth:160}}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

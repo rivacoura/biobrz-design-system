@@ -1,0 +1,152 @@
+<!-- @dsCard group="Brand" viewport="760x560" name="Photography Direction" subtitle="Dois direcionamentos visuais — Decisor em Movimento · A Escolha Certa" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-offwhite); font-family: var(--font-primary); padding: 24px; }
+
+    .directions { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .direction { display: flex; flex-direction: column; gap: 12px; }
+
+    .dir-header { display: flex; align-items: flex-start; gap: 10px; }
+    .dir-badge {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 2px; white-space: nowrap;
+    }
+    .badge-1 { background: var(--color-black); color: var(--color-white); }
+    .badge-2 { background: var(--color-green-500); color: var(--color-white); }
+
+    .dir-title { font-size: 13px; font-weight: 700; color: var(--color-black); line-height: 1.2; }
+    .dir-sub { font-size: 11px; color: var(--color-gray-600); margin-top: 2px; line-height: 1.35; }
+
+    .photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .photo-item { display: flex; flex-direction: column; gap: 5px; }
+    .photo-wrap {
+      width: 100%; aspect-ratio: 3/4;
+      overflow: hidden; border-radius: 2px;
+      position: relative;
+    }
+    .photo-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .photo-code {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--color-gray-400);
+    }
+    .photo-label { font-size: 10px; color: var(--color-gray-600); line-height: 1.3; }
+
+    .traits { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 4px; border-top: 1px solid var(--color-green-100); }
+    .trait {
+      font-size: 9px; font-weight: 600; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 100px;
+    }
+    .trait-1 { background: var(--color-gray-100); color: var(--color-gray-800); }
+    .trait-2 { background: var(--color-green-50); color: var(--color-green-500); }
+
+    .divider-v { width: 1px; background: var(--color-green-200); }
+  </style>
+</head>
+<body>
+  <div class="directions">
+
+    <!-- DIRECIONAMENTO 1 -->
+    <div class="direction">
+      <div class="dir-header">
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <span class="dir-badge badge-1">Dir. 01</span>
+          </div>
+          <div class="dir-title">O Decisor em Movimento</div>
+          <div class="dir-sub">Autoridade técnica. Foco e ação. Tom frio e cinematográfico, recortes fechados, luz dramática.</div>
+        </div>
+      </div>
+
+      <div class="photos">
+        <div class="photo-item">
+          <div class="photo-wrap">
+            <img src="../assets/brand/photo-eye-closeup.png" alt="Olhar focado — close nos óculos com reflexo de dados financeiros">
+          </div>
+          <div class="photo-code">1A</div>
+          <div class="photo-label">Olhar focado — detalhe</div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-wrap">
+            <img src="../assets/brand/photo-professional-desk.png" alt="Profissional focado em mesa com laptop">
+          </div>
+          <div class="photo-code">1C</div>
+          <div class="photo-label">Perfil estratégico</div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-wrap">
+            <img src="../assets/brand/photo-tablet-office.jpg" alt="Executivo com tablet em escritório envidraçado">
+          </div>
+          <div class="photo-code">1B</div>
+          <div class="photo-label">Profissional que age</div>
+        </div>
+      </div>
+
+      <div class="traits">
+        <span class="trait trait-1">Luz dramática</span>
+        <span class="trait trait-1">Tom frio</span>
+        <span class="trait trait-1">Recorte fechado</span>
+        <span class="trait trait-1">Alto contraste</span>
+        <span class="trait trait-1">Expressão de foco</span>
+        <span class="trait trait-1">Arquitetura de vidro</span>
+      </div>
+    </div>
+
+    <!-- DIRECIONAMENTO 2 -->
+    <div class="direction">
+      <div class="dir-header">
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <span class="dir-badge badge-2">Dir. 02</span>
+          </div>
+          <div class="dir-title">A Escolha Certa</div>
+          <div class="dir-sub">Confiança e leveza. "Estar em boas mãos". Tom quente, luz natural, posturas abertas, perfis maduros.</div>
+        </div>
+      </div>
+
+      <div class="photos">
+        <div class="photo-item">
+          <div class="photo-wrap">
+            <img src="../assets/brand/photo-mature-urban.jpg" alt="Homem maduro em ambiente urbano com casaco cinza">
+          </div>
+          <div class="photo-code">2A</div>
+          <div class="photo-label">Maturidade confiante</div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-wrap">
+            <img src="../assets/brand/photo-relaxed-lounge.jpg" alt="Profissional relaxado em lounge premium com laptop">
+          </div>
+          <div class="photo-code">2B</div>
+          <div class="photo-label">Tranquilidade premium</div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-wrap">
+            <img src="../assets/brand/photo-silver-tablet.jpg" alt="Executivo de cabelos brancos com tablet olhando para cima">
+          </div>
+          <div class="photo-code">2C</div>
+          <div class="photo-label">Visão e direção</div>
+        </div>
+      </div>
+
+      <div class="traits">
+        <span class="trait trait-2">Luz natural</span>
+        <span class="trait trait-2">Tom quente</span>
+        <span class="trait trait-2">Postura aberta</span>
+        <span class="trait trait-2">Perfil 40–60 anos</span>
+        <span class="trait trait-2">Off-white highlights</span>
+        <span class="trait trait-2">Sorriso discreto</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

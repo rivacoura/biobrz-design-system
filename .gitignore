@@ -24,8 +24,5 @@ _ds_bundle.js
 _ds_manifest.json
 _adherence.oxlintrc.json
 SKILL.md
-components/
 exports/
-guidelines/
-tokens/
 ui_kits/
