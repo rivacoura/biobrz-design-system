@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+dist/
+build/
+
+# Project specific
+uploads/
+.thumbnail
+_ds_bundle.js
+_ds_manifest.json
+_adherence.oxlintrc.json
+SKILL.md
+components/
+exports/
+guidelines/
+tokens/
+ui_kits/

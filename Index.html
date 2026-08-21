@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIOBRZ — Brand System</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      font-family: var(--font-primary);
+      background: var(--color-offwhite);
+      color: var(--color-black);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      padding-left: 232px;
+    }
+    img { display: block; max-width: 100%; }
+    ::selection { background: var(--color-gold-300); color: #000; }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+    /* ── shared type ── */
+    .overline {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--color-green-500);
+    }
+    .section-title {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 400;
+      letter-spacing: -0.02em; line-height: 1.05; margin: 14px 0 0;
+    }
+    .section-lead {
+      font-size: 18px; font-weight: 400; color: var(--color-gray-600);
+      max-width: 620px; margin: 18px 0 0; line-height: 1.55;
+    }
+    section { padding: 110px 0; }
+    .section-head { margin-bottom: 56px; }
+
+    /* ── NAV (sidebar) ── */
+    .nav {
+      position: fixed; top: 0; left: 0; bottom: 0; z-index: 100;
+      width: 232px;
+      display: flex; flex-direction: column; align-items: stretch;
+      padding: 32px 22px;
+      background: var(--color-offwhite);
+      border-right: 1px solid var(--color-green-100);
+      transition: box-shadow 200ms ease;
+    }
+    .nav.scrolled { box-shadow: 2px 0 16px rgba(0, 0, 0, 0.04); }
+    .nav-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 38px; }
+    .nav-brand img { height: 30px; }
+    .nav-menu { display: flex; flex-direction: column; align-items: stretch; gap: 2px; flex: 1; }
+    .nav-link {
+      font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+      color: var(--color-gray-600); text-decoration: none;
+      padding: 10px 14px; border-radius: 3px;
+      transition: color 100ms ease, background 100ms ease;
+    }
+    .nav-link:hover { color: var(--color-black); background: var(--color-green-50); }
+    .nav-link.active { color: var(--color-green-500); font-weight: 600; background: var(--color-green-50); }
+    .nav-cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--color-gold-500); color: #000;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 13px 18px; border-radius: 2px; text-decoration: none; margin-top: auto;
+      transition: opacity 100ms ease, transform 100ms ease;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-cta:active { transform: scale(0.97); }
+    .nav-cta svg { width: 15px; height: 15px; }
+    #nav-toggle { display: none; background: none; border: none; cursor: pointer; color: #000; }
+    #nav-toggle svg { width: 26px; height: 26px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--color-black); color: #fff;
+      min-height: 92vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 140px 0 100px;
+    }
+    .hero-asterisk {
+      position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
+      width: 540px; height: 540px; color: var(--color-green-500);
+      opacity: 0.18; pointer-events: none;
+    }
+    .hero-asterisk svg { width: 100%; height: 100%; }
+    .hero-inner { position: relative; z-index: 2; max-width: 860px; }
+    .hero-logo { height: 44px; margin-bottom: 40px; }
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 88px); font-weight: 400;
+      letter-spacing: -0.03em; line-height: 1.02;
+    }
+    .hero h1 .gold { color: var(--color-gold-500); }
+    .hero p {
+      font-size: 20px; font-weight: 300; color: rgba(255,255,255,0.66);
+      max-width: 560px; margin-top: 30px; line-height: 1.55;
+    }
+    .hero-meta {
+      display: flex; gap: 40px; margin-top: 52px; flex-wrap: wrap;
+    }
+    .hero-meta div { display: flex; flex-direction: column; gap: 4px; }
+    .hero-meta .num { font-size: 32px; font-weight: 400; color: #fff; letter-spacing: -0.02em; }
+    .hero-meta .lbl { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+    /* ── LOGO SECTION ── */
+    .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .logo-card {
+      border: 1px solid var(--color-green-200); border-radius: 4px;
+      overflow: hidden; background: #fff;
+    }
+    .logo-stage {
+      height: 200px; display: flex; align-items: center; justify-content: center; padding: 40px;
+    }
+    .logo-stage img { max-height: 64px; }
+    .logo-stage.on-light { background: var(--color-offwhite); }
+    .logo-stage.on-green { background: var(--color-green-500); }
+    .logo-stage.on-black { background: var(--color-black); }
+    .logo-caption {
+      padding: 16px 20px; border-top: 1px solid var(--color-green-100);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-caption .name { font-size: 14px; font-weight: 600; }
+    .logo-caption .use { font-size: 12px; color: var(--color-gray-400); }
+
+    .logo-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+    .rule {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 18px 20px; border-radius: 4px; font-size: 14px; line-height: 1.5;
+    }
+    .rule.do { background: var(--color-green-50); color: var(--color-gray-800); }
+    .rule.dont { background: #FBEDEB; color: var(--color-gray-800); }
+    .rule .mark {
+      width: 22px; height: 22px; border-radius: 100px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 13px; color: #fff;
+    }
+    .rule.do .mark { background: var(--color-green-500); }
+    .rule.dont .mark { background: var(--color-error); }
+    .rule strong { display: block; font-weight: 600; margin-bottom: 2px; }
+
+    /* ── COLORS ── */
+    .color-block { margin-bottom: 40px; }
+    .color-block-head h4 { font-size: 20px; font-weight: 600; }
+    .color-block-head p { font-size: 14px; color: var(--color-gray-600); margin: 4px 0 18px; }
+    .swatch-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .swatch {
+      position: relative; aspect-ratio: 4/5; border-radius: 4px; cursor: pointer;
+      border: none; padding: 14px; text-align: left;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      font-family: inherit; transition: transform 100ms ease, box-shadow 100ms ease;
+    }
+    .swatch:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .sw-tag {
+      position: absolute; top: 12px; left: 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .sw-meta { display: flex; flex-direction: column; gap: 1px; }
+    .sw-name { font-size: 13px; font-weight: 600; }
+    .sw-hex { font-size: 11px; font-family: 'SFMono-Regular', Menlo, monospace; opacity: 0.8; }
+    .copy-hint { font-size: 13px; color: var(--color-gray-400); margin-top: 8px; }
+
+    /* ── TYPOGRAPHY ── */
+    .type-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
+    .specimen { border-bottom: 1px solid var(--color-green-100); padding: 22px 0; }
+    .specimen:first-child { padding-top: 0; }
+    .specimen .lbl { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gray-400); margin-bottom: 8px; }
+    .specimen .sample { color: var(--color-black); line-height: 1.1; }
+    .weights { display: flex; flex-direction: column; gap: 0; }
+    .weight-row {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: 14px 0; border-bottom: 1px solid var(--color-green-100);
+    }
+    .weight-row span:first-child { font-size: 26px; }
+    .weight-row span:last-child { font-size: 12px; color: var(--color-gray-400); letter-spacing: 0.05em; }
+    .type-aside {
+      background: var(--color-black); color: #fff; border-radius: 4px; padding: 36px;
+      position: sticky; top: 100px;
+    }
+    .type-aside .big { font-size: 120px; font-weight: 400; line-height: 1; letter-spacing: -0.04em; }
+    .type-aside .face { font-size: 22px; font-weight: 500; margin-top: 20px; }
+    .type-aside .note { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 10px; line-height: 1.55; }
+    .type-aside .glyphs { font-size: 15px; color: rgba(255,255,255,0.4); margin-top: 22px; letter-spacing: 0.04em; word-spacing: 2px; }
+
+    /* ── ICONS ── */
+    .icon-section-label { font-size: 14px; font-weight: 600; margin: 0 0 18px; display: flex; align-items: center; gap: 10px; }
+    .icon-section-label .pill {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--color-green-100); color: var(--color-green-500); padding: 3px 10px; border-radius: 100px;
+    }
+    .icon-grid { display: grid; gap: 12px; margin-bottom: 44px; }
+    #brand-icon-grid { grid-template-columns: repeat(5, 1fr); }
+    #ui-icon-grid { grid-template-columns: repeat(8, 1fr); }
+    .icon-tile {
+      background: #fff; border: 1px solid var(--color-green-100); border-radius: 4px;
+      aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; cursor: pointer; font-family: inherit; padding: 12px;
+      transition: transform 100ms ease, box-shadow 100ms ease, border-color 100ms ease;
+    }
+    .icon-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); border-color: var(--color-green-300); }
+    .icon-box { display: flex; align-items: center; justify-content: center; color: var(--color-green-500); height: 44px; }
+    #ui-icon-grid .icon-box { color: var(--color-black); }
+    .icon-name { font-size: 10px; color: var(--color-gray-400); letter-spacing: 0.02em; text-align: center; line-height: 1.2; }
+
+    /* ── DOWNLOADS ── */
+    #downloads { background: var(--color-black); color: #fff; }
+    #downloads .overline { color: var(--color-gold-500); }
+    #downloads .section-title { color: #fff; }
+    #downloads .section-lead { color: rgba(255,255,255,0.6); }
+    .dl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .dl-card {
+      background: #111; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px;
+      padding: 28px; display: flex; flex-direction: column; gap: 14px; text-align: left;
+      cursor: pointer; font-family: inherit; color: #fff;
+      transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+    }
+    .dl-card:hover { transform: translateY(-4px); border-color: var(--color-gold-500); background: #161616; }
+    .dl-card.busy { opacity: 0.7; cursor: progress; }
+    .dl-card.wide { grid-column: span 3; flex-direction: row; align-items: center; justify-content: space-between; background: var(--color-green-500); border-color: var(--color-green-500); }
+    .dl-card.wide:hover { background: var(--color-green-400); border-color: var(--color-green-400); }
+    .dl-icon { width: 44px; height: 44px; color: var(--color-gold-500); }
+    .dl-card.wide .dl-icon { color: #fff; }
+    .dl-icon svg { width: 100%; height: 100%; }
+    .dl-title { font-size: 19px; font-weight: 500; }
+    .dl-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .dl-card.wide .dl-desc { color: rgba(255,255,255,0.8); }
+    .dl-foot { display: flex; align-items: center; gap: 8px; margin-top: auto; }
+    .dl-label { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold-500); }
+    .dl-card.wide .dl-label { color: #fff; font-size: 13px; }
+    .dl-foot svg { width: 16px; height: 16px; color: inherit; }
+    .dl-wide-left { display: flex; align-items: center; gap: 22px; }
+    .dl-wide-text .dl-title { font-size: 26px; font-weight: 400; }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--color-black); color: rgba(255,255,255,0.5); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer img { height: 22px; opacity: 0.9; }
+    .footer .tag { font-size: 13px; font-style: italic; }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--color-black); color: #fff; padding: 12px 22px; border-radius: 100px;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.02em; z-index: 200;
+      opacity: 0; pointer-events: none; transition: opacity 200ms ease, transform 200ms ease;
+      box-shadow: var(--shadow-lg);
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── MISUSE ── */
+    .misuse-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .misuse-tile { background: var(--color-offwhite); border: 1px solid var(--color-green-100); border-radius: 4px; overflow: hidden; }
+    .misuse-stage { position: relative; height: 140px; display: flex; align-items: center; justify-content: center; padding: 24px; overflow: hidden; }
+    .misuse-stage img { height: 44px; object-fit: contain; max-width: 80%; }
+    .misuse-badge { position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; border-radius: 100px; background: var(--color-error); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; box-shadow: var(--shadow-sm); }
+    .misuse-cap { border-top: 1px solid var(--color-green-100); padding: 14px 18px; }
+    .misuse-cap .no { font-size: 13px; font-weight: 600; color: var(--color-error); margin-bottom: 2px; }
+    .misuse-cap .d { font-size: 13px; color: var(--color-gray-600); line-height: 1.4; }
+    .busy-bg { background-image: repeating-linear-gradient(45deg, #3E7853 0, #3E7853 12px, #5A9070 12px, #5A9070 24px); }
+
+    /* ── PHOTOGRAPHY ── */
+    .photo-dirs { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+    .photo-badge { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 11px; border-radius: 2px; margin-bottom: 12px; }
+    .pb-1 { background: #000; color: #fff; }
+    .pb-2 { background: var(--color-green-500); color: #fff; }
+    .photo-dir h4 { font-size: 24px; font-weight: 400; letter-spacing: -0.01em; }
+    .photo-dir .sub { font-size: 14px; color: var(--color-gray-600); margin-top: 8px; line-height: 1.5; }
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 18px 0; }
+    .photo-frame { aspect-ratio: 3/4; overflow: hidden; border-radius: 3px; background: var(--color-green-100); }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transition: transform 300ms ease; }
+    .photo-frame:hover img { transform: scale(1.04); }
+    .photo-traits { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ptrait { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; padding: 4px 11px; border-radius: 100px; background: var(--color-green-50); color: var(--color-green-500); border: 1px solid var(--color-green-100); }
+
+    /* ── PROMPTS ── */
+    .dna-block { background: #000; border-radius: 6px; padding: 22px 24px; margin-bottom: 26px; cursor: pointer; transition: opacity 120ms ease; }
+    .dna-block:hover { opacity: 0.92; }
+    .dna-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 16px; }
+    .dna-head .l { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-gold-500); }
+    .dna-head .c { font-size: 11px; color: rgba(255,255,255,0.4); white-space: nowrap; }
+    .dna-code { font-family: 'SFMono-Regular', Menlo, monospace; font-size: 12px; color: rgba(255,255,255,0.82); line-height: 1.65; }
+    .dna-neg { font-family: 'SFMono-Regular', Menlo, monospace; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 10px; line-height: 1.5; }
+    .prompt-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .prompt-colhead { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 8px; border-bottom: 2px solid; margin-bottom: 16px; }
+    .pch-1 { color: #000; border-color: #000; }
+    .pch-2 { color: var(--color-green-500); border-color: var(--color-green-500); }
+    .prompt-card { margin-bottom: 12px; }
+    .prompt-code { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gray-400); margin-bottom: 5px; }
+    .prompt-block { background: var(--color-offwhite); border: 1px solid var(--color-green-100); border-radius: 3px; padding: 11px 13px; font-family: 'SFMono-Regular', Menlo, monospace; font-size: 11.5px; color: var(--color-gray-600); line-height: 1.55; cursor: pointer; transition: border-color 120ms ease, background 120ms ease; }
+    .prompt-block:hover { border-color: var(--color-green-300); background: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 920px) {
+      body { padding-left: 0; }
+      .nav {
+        flex-direction: row; align-items: center; justify-content: space-between;
+        top: 0; bottom: auto; width: auto; right: 0;
+        padding: 14px 22px;
+        border-right: none; border-bottom: 1px solid var(--color-green-100);
+      }
+      .nav.scrolled { box-shadow: 0 1px 0 var(--color-green-100); }
+      .nav-brand { margin-bottom: 0; }
+      .nav-brand img { height: 26px; }
+      .nav-menu {
+        position: fixed; top: 60px; right: 22px; left: 22px;
+        flex: none; flex-direction: column; align-items: stretch; gap: 2px;
+        background: #fff; border: 1px solid var(--color-green-200); border-radius: 6px;
+        padding: 10px; box-shadow: var(--shadow-lg); display: none;
+      }
+      .nav-menu.open { display: flex; }
+      .nav-cta { margin: 6px 0 0; }
+      #nav-toggle { display: block; }
+    }
+    @media (max-width: 900px) {
+      .type-wrap { grid-template-columns: 1fr; gap: 32px; }
+      .type-aside { position: static; }
+      #ui-icon-grid { grid-template-columns: repeat(5, 1fr); }
+      .photo-dirs, .prompt-cols { grid-template-columns: 1fr; }
+      .misuse-grid { grid-template-columns: repeat(2, 1fr); }
+      .dl-grid { grid-template-columns: 1fr; }
+      .dl-card.wide { grid-column: span 1; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 720px) {
+      .container { padding: 0 22px; }
+      .logo-grid { grid-template-columns: 1fr; }
+      .logo-rules { grid-template-columns: 1fr; }
+      .swatch-row { grid-template-columns: repeat(3, 1fr); }
+      #brand-icon-grid { grid-template-columns: repeat(3, 1fr); }
+      #ui-icon-grid { grid-template-columns: repeat(4, 1fr); }
+      .misuse-grid { grid-template-columns: 1fr; }
+      .hero-meta { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-brand" href="#top" aria-label="BIOBRZ">
+      <img src="assets/logos/LogoFinalPreta.png" alt="BIOBRZ">
+    </a>
+    <button id="nav-toggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="nav-menu" id="nav-menu">
+      <a class="nav-link" href="#logo">Logo</a>
+      <a class="nav-link" href="#cores">Cores</a>
+      <a class="nav-link" href="#tipografia">Tipografia</a>
+      <a class="nav-link" href="#icones">Ícones</a>
+      <a class="nav-link" href="#fotografia">Fotografia</a>
+      <a class="nav-link" href="#voz">Voz</a>
+      <a class="nav-link" href="#materiais">Materiais</a>
+      <a class="nav-cta" href="#downloads">
+        Baixar ativos
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3v12"></path><polyline points="7,11 12,16 17,11"></polyline><line x1="4" y1="21" x2="20" y2="21"></line></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-asterisk">
+      <svg viewBox="0 0 48 48" fill="currentColor"><rect x="21.5" y="3" width="5" height="42" rx="1" transform="rotate(0 24 24)"></rect><rect x="21.5" y="3" width="5" height="42" rx="1" transform="rotate(60 24 24)"></rect><rect x="21.5" y="3" width="5" height="42" rx="1" transform="rotate(120 24 24)"></rect></svg>
+    </div>
+    <div class="container hero-inner">
+      <img class="hero-logo" src="assets/logos/LogoFinalBranca.png" alt="BIOBRZ">
+      <h1>Uma marca que não<br>precisa ser <span class="gold">explicada.</span></h1>
+      <p>O sistema de identidade da BioBrz Consultores — boutique de consultoria tributária e auditoria independente. Quinze anos construindo em silêncio.</p>
+      <div class="hero-meta">
+        <div><span class="num">15</span><span class="lbl">Anos</span></div>
+        <div><span class="num">3</span><span class="lbl">Frentes integradas</span></div>
+        <div><span class="num">5</span><span class="lbl">Cores institucionais</span></div>
+        <div><span class="num" id="icon-count">26</span><span class="lbl">Ícones</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOGO -->
+  <section id="logo">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">01 — Identidade</div>
+        <h2 class="section-title">O logotipo</h2>
+        <p class="section-lead">Três versões oficiais. Use cada uma sobre o fundo correto para garantir contraste e integridade. Nunca recrie, recolore ou distorça.</p>
+      </div>
+
+      <div class="logo-grid">
+        <div class="logo-card">
+          <div class="logo-stage on-light"><img src="assets/logos/LogoFinal.png" alt="Logo colorida"></div>
+          <div class="logo-caption"><span class="name">Colorida</span><span class="use">Fundo claro</span></div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-stage on-green"><img src="assets/logos/LogoFinalBranca.png" alt="Logo branca"></div>
+          <div class="logo-caption"><span class="name">Branca</span><span class="use">Fundo escuro / verde</span></div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-stage on-light"><img src="assets/logos/LogoFinalPreta.png" alt="Logo preta"></div>
+          <div class="logo-caption"><span class="name">Preta</span><span class="use">Mono / impressão</span></div>
+        </div>
+      </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISUSE -->
+  <section id="proibido" style="background: #fff;">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline" style="color: var(--color-error);">02 — Usos proibidos</div>
+        <h2 class="section-title">O que não fazer com a marca</h2>
+        <p class="section-lead">A integridade do logotipo é inegociável. Nunca aplique nenhuma destas alterações.</p>
+      </div>
+      <div class="misuse-grid">
+        <div class="misuse-tile">
+          <div class="misuse-stage"><span class="misuse-badge">✕</span><img src="assets/logos/LogoFinal.png" alt="" style="transform: scaleX(0.5);"></div>
+          <div class="misuse-cap"><div class="no">Não distorça</div><div class="d">Nunca estique, comprima ou altere as proporções.</div></div>
+        </div>
+        <div class="misuse-tile">
+          <div class="misuse-stage"><span class="misuse-badge">✕</span><img src="assets/logos/LogoFinal.png" alt="" style="transform: rotate(-13deg);"></div>
+          <div class="misuse-cap"><div class="no">Não gire</div><div class="d">Mantenha o logo sempre na horizontal, sem inclinação.</div></div>
+        </div>
+        <div class="misuse-tile">
+          <div class="misuse-stage"><span class="misuse-badge">✕</span><img src="assets/logos/LogoFinal.png" alt="" style="filter: hue-rotate(150deg) saturate(2.2);"></div>
+          <div class="misuse-cap"><div class="no">Não altere as cores</div><div class="d">Use apenas as versões oficiais: colorida, branca ou preta.</div></div>
+        </div>
+        <div class="misuse-tile">
+          <div class="misuse-stage"><span class="misuse-badge">✕</span><img src="assets/logos/LogoFinal.png" alt="" style="filter: drop-shadow(4px 6px 3px rgba(0,0,0,0.45));"></div>
+          <div class="misuse-cap"><div class="no">Não aplique efeitos</div><div class="d">Sem sombras, brilhos, gradientes, contornos ou 3D.</div></div>
+        </div>
+        <div class="misuse-tile">
+          <div class="misuse-stage" style="background: var(--color-green-500);"><span class="misuse-badge">✕</span><img src="assets/logos/LogoFinal.png" alt=""></div>
+          <div class="misuse-cap"><div class="no">Não use em baixo contraste</div><div class="d">A versão colorida some sobre o verde. Prefira a branca.</div></div>
+        </div>
+        <div class="misuse-tile">
+          <div class="misuse-stage busy-bg"><span class="misuse-badge">✕</span><img src="assets/logos/LogoFinal.png" alt=""></div>
+          <div class="misuse-cap"><div class="no">Não use sobre fundo atarefado</div><div class="d">Evite padrões e imagens que comprometam a leitura.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLORS -->
+  <section id="cores" style="background: #fff;">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">03 — Cores</div>
+        <h2 class="section-title">Paleta institucional</h2>
+        <p class="section-lead">Uma releitura sofisticada da bandeira brasileira. Verde ancora, ouro acentua, off-white respira, azul refina, preto comanda.</p>
+        <p class="copy-hint">Clique em qualquer cor para copiar o HEX.</p>
+      </div>
+      <div id="color-groups"></div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section id="tipografia">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">04 — Tipografia</div>
+        <h2 class="section-title">Barlow</h2>
+        <p class="section-lead">Um único sistema tipográfico. Geométrica, sem serifa — uma ruptura deliberada com o setor contábil conservador. A hierarquia nasce do tamanho e do espaçamento, não do peso.</p>
+      </div>
+
+      <div class="type-wrap">
+        <div>
+          <div class="specimen">
+            <div class="lbl">Display · 400</div>
+            <div class="sample" style="font-size:54px; font-weight:400; letter-spacing:-0.02em;">O imposto certo<br>libera o crescimento</div>
+          </div>
+          <div class="specimen">
+            <div class="lbl">Título · 400</div>
+            <div class="sample" style="font-size:34px; font-weight:400;">Credibilidade que o mercado reconhece</div>
+          </div>
+          <div class="specimen">
+            <div class="lbl">Subtítulo · 400</div>
+            <div class="sample" style="font-size:22px; font-weight:400; color:var(--color-gray-600);">Números que orientam. Contabilidade que decide.</div>
+          </div>
+          <div class="specimen">
+            <div class="lbl">Corpo · 400</div>
+            <div class="sample" style="font-size:16px; font-weight:400; line-height:1.6; color:var(--color-gray-600);">A BioBrz comunica com a autoridade e a precisão de uma casa de alto padrão. Cada palavra merece seu lugar. Frases curtas, declarativas e ressonantes.</div>
+          </div>
+          <div class="specimen">
+            <div class="lbl">Rótulo / CTA · maiúsculas, tracking largo</div>
+            <div class="sample" style="font-size:14px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;">Consultoria Tributária Estratégica</div>
+          </div>
+        </div>
+
+        <aside class="type-aside">
+          <div class="big">Aa</div>
+          <div class="face">Barlow</div>
+          <div class="note">Geométrica sans-serif. Sistema de tipo único — nunca combine com uma segunda família. Pesos 300 a 700 disponíveis para download.</div>
+          <div class="glyphs">A B C D E F G &nbsp; a b c d e f g &nbsp; 0 1 2 3 4 5 &nbsp; R$ &amp; % @</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICONS -->
+  <section id="icones" style="background: #fff;">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">05 — Iconografia</div>
+        <h2 class="section-title">Biblioteca de ícones</h2>
+        <p class="section-lead">Ícones de interface geométricos — traço de 2px, cantos retos. Todos em SVG com <code>currentColor</code>. Clique em qualquer ícone para baixá-lo.</p>
+      </div>
+
+      <div class="icon-grid" id="ui-icon-grid"></div>
+    </div>
+  </section>
+
+  <!-- PHOTOGRAPHY -->
+  <section id="fotografia">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">06 — Fotografia</div>
+        <h2 class="section-title">Direção fotográfica</h2>
+        <p class="section-lead">Dois direcionamentos. Tons quentes, sem alta saturação, sem preto e branco. Perfis maduros, postura intencional, luz com propósito.</p>
+      </div>
+      <div class="photo-dirs">
+        <div class="photo-dir">
+          <span class="photo-badge pb-1">Dir. 01 — O Decisor em Movimento</span>
+          <h4>Autoridade técnica</h4>
+          <p class="sub">Foco e ação. Tom frio e cinematográfico, recortes fechados, luz dramática.</p>
+          <div class="photo-grid">
+            <div class="photo-frame"><img src="assets/brand/photo-eye-closeup.png" alt="Olhar focado"></div>
+            <div class="photo-frame"><img src="assets/brand/photo-professional-desk.png" alt="Perfil estratégico"></div>
+            <div class="photo-frame"><img src="assets/brand/photo-tablet-office.jpg" alt="Profissional que age"></div>
+          </div>
+          <div class="photo-traits">
+            <span class="ptrait">Luz dramática</span><span class="ptrait">Tom frio</span><span class="ptrait">Recorte fechado</span><span class="ptrait">Alto contraste</span><span class="ptrait">Foco</span>
+          </div>
+        </div>
+        <div class="photo-dir">
+          <span class="photo-badge pb-2">Dir. 02 — A Escolha Certa</span>
+          <h4>Confiança e leveza</h4>
+          <p class="sub">“Estar em boas mãos”. Tom quente, luz natural, posturas abertas, perfis maduros.</p>
+          <div class="photo-grid">
+            <div class="photo-frame"><img src="assets/brand/photo-mature-urban.jpg" alt="Maturidade confiante"></div>
+            <div class="photo-frame"><img src="assets/brand/photo-relaxed-lounge.jpg" alt="Tranquilidade premium"></div>
+            <div class="photo-frame"><img src="assets/brand/photo-silver-tablet.jpg" alt="Visão e direção"></div>
+          </div>
+          <div class="photo-traits">
+            <span class="ptrait">Luz natural</span><span class="ptrait">Tom quente</span><span class="ptrait">Postura aberta</span><span class="ptrait">40–60 anos</span><span class="ptrait">Sorriso discreto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMPTS -->
+  <section id="prompts" style="background: #fff;">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">07 — Prompts de IA</div>
+        <h2 class="section-title">Geração de imagens</h2>
+        <p class="section-lead">Prompts prontos para Midjourney, DALL·E ou Firefly. Clique em qualquer bloco para copiar.</p>
+      </div>
+
+      <div class="dna-block copy-block" data-text="shot on Sony A7IV, 50mm f/1.4, shallow depth of field, cinematic color grading with deep forest-green and amber tones, warm off-white highlights, premium corporate atmosphere, refined and restrained, editorial quality, natural film grain, high-end commercial photography, --ar 4:5 --style raw. Negative: no cartoon, no illustration, no stock-photo cheesiness, no exaggerated smiles, no clutter, no neon, no oversaturation, no text, no logos">
+        <div class="dna-head"><span class="l">DNA Visual — base de todo prompt</span><span class="c">clique para copiar</span></div>
+        <div class="dna-code">shot on Sony A7IV, 50mm f/1.4, shallow depth of field, cinematic color grading with deep forest-green and amber tones, warm off-white highlights, premium corporate atmosphere, refined and restrained, editorial quality, natural film grain, --ar 4:5 --style raw</div>
+        <div class="dna-neg">Negative: no cartoon, no illustration, no stock-photo cheesiness, no exaggerated smiles, no clutter, no neon, no oversaturation, no text, no logos</div>
+      </div>
+
+      <div class="prompt-cols">
+        <div>
+          <div class="prompt-colhead pch-1">Dir. 01 — O Decisor em Movimento</div>
+          <div class="prompt-card"><div class="prompt-code">1A · Olhar focado</div><div class="prompt-block copy-block">Extreme close-up of a focused executive's eyes behind modern glasses, reflection of financial data in the lenses, dramatic side lighting, deep shadows, forest-green and amber grade, intense concentration</div></div>
+          <div class="prompt-card"><div class="prompt-code">1B · Profissional que age</div><div class="prompt-block copy-block">Confident executive in tailored dark navy suit, glass-walled office, holding a tablet mid-action, soft window light, calm focused expression, cool cinematic tone with warm highlights</div></div>
+          <div class="prompt-card"><div class="prompt-code">1C · Perfil estratégico</div><div class="prompt-block copy-block">Side profile of a sharp decision-maker looking forward with determination, office softly blurred, dramatic directional lighting, deep contrast, muted green and amber palette</div></div>
+          <div class="prompt-card"><div class="prompt-code">1E · Detalhe das mãos</div><div class="prompt-block copy-block">Close-up of experienced hands annotating a financial document with a premium pen, warm desk lamp, dark surroundings, precision and attention to detail, amber accent, shallow focus</div></div>
+        </div>
+        <div>
+          <div class="prompt-colhead pch-2">Dir. 02 — A Escolha Certa</div>
+          <div class="prompt-card"><div class="prompt-code">2A · Maturidade confiante</div><div class="prompt-block copy-block">Mature distinguished man in his 50s, grey hair and beard, cream turtleneck under grey-green wool blazer, relaxed confident smile, city softly blurred, golden natural light, open posture</div></div>
+          <div class="prompt-card"><div class="prompt-code">2B · Tranquilidade premium</div><div class="prompt-block copy-block">Confident professional in his late 40s relaxed in a bright modern lounge, navy blazer over white tee, holding a laptop, genuine smile, large windows, warm off-white tones</div></div>
+          <div class="prompt-card"><div class="prompt-code">2C · Visão e direção</div><div class="prompt-block copy-block">Silver-haired executive in dark blazer and sage-green shirt, holding a tablet, looking upward with calm optimism, modern glass building, bright natural light, aspirational tone</div></div>
+          <div class="prompt-card"><div class="prompt-code">2D · Parceria</div><div class="prompt-block copy-block">Trusted senior advisor and client in conversation across a bright minimalist table, warm natural light, high-end business-casual, relaxed engaged body language, sense of trust</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICE -->
+  <section id="voz">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">08 — Voz &amp; Tom</div>
+        <h2 class="section-title">Como a marca fala</h2>
+        <p class="section-lead">Autoridade e precisão de uma casa de alto padrão. Impacto primeiro, evidência depois. Nunca prolixa, nunca casual, nunca com emoji.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1.4fr 1fr; gap:48px; align-items:start;">
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <blockquote style="font-size:28px; font-weight:400; line-height:1.35; letter-spacing:-0.01em; border-left:3px solid var(--color-gold-500); padding-left:24px;">"Todo patrimônio carrega uma história. A BioBrz lê o que os outros não sabem ver."</blockquote>
+          <blockquote style="font-size:22px; font-weight:400; line-height:1.4; color:var(--color-gray-600); border-left:3px solid var(--color-green-200); padding-left:24px;">"Não é um escritório de contabilidade. É uma casa de alto padrão."</blockquote>
+          <blockquote style="font-size:22px; font-weight:400; line-height:1.4; color:var(--color-gray-600); border-left:3px solid var(--color-green-200); padding-left:24px;">"Quinze anos construindo em silêncio. Agora, com a voz que merece."</blockquote>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--color-green-500); font-weight:600; margin-bottom:4px;">Atributos</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span class="vchip">Exclusiva</span><span class="vchip">Ousada</span><span class="vchip">Confiável</span>
+            <span class="vchip">Institucional</span><span class="vchip">Precisa</span><span class="vchip">Declarativa</span>
+          </div>
+          <div style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--color-error); font-weight:600; margin:18px 0 4px;">Nunca</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span class="vchip off">Alegre</span><span class="vchip off">Casual</span><span class="vchip off">Emotiva</span>
+            <span class="vchip off">Prolixa</span><span class="vchip off">Emoji</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIALS -->
+  <section id="materiais" style="background: var(--color-offwhite);">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">10 — Materiais</div>
+        <h2 class="section-title">Apresentações &amp; templates</h2>
+        <p class="section-lead">Decks e templates oficiais em Google Slides. Abra o link para visualizar, editar ou fazer uma cópia.</p>
+      </div>
+      <div class="dl-grid">
+        <a class="dl-card" href="https://docs.google.com/presentation/d/1SH11rDE_d626qXlrNuHm6qt9HtEFoEYbCl27d-rcf3E/edit?usp=sharing" target="_blank" rel="noopener">
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="4" width="18" height="13"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+          <div class="dl-title">Deck Comercial</div>
+          <div class="dl-desc">Apresentação institucional para reuniões comerciais.</div>
+          <div class="dl-foot"><span class="dl-label">Abrir no Google Slides</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M7 17L17 7"></path><polyline points="7,7 17,7 17,17"></polyline></svg></div>
+        </a>
+
+        <a class="dl-card" href="https://docs.google.com/presentation/d/1usfoK-ya5C0E614aST4_nokn0_2H9MVZysLJhEsIidg/edit?usp=sharing" target="_blank" rel="noopener">
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="4" width="18" height="13"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+          <div class="dl-title">Template — Proposta Comercial</div>
+          <div class="dl-desc">Modelo padrão para propostas comerciais.</div>
+          <div class="dl-foot"><span class="dl-label">Abrir no Google Slides</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M7 17L17 7"></path><polyline points="7,7 17,7 17,17"></polyline></svg></div>
+        </a>
+
+        <a class="dl-card" href="https://docs.google.com/presentation/d/17AVdEsiFBuh3LOt6e3mI1TKejssPUo2v/edit?usp=sharing&ouid=109318637552975857512&rtpof=true&sd=true" target="_blank" rel="noopener">
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="4" width="18" height="13"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+          <div class="dl-title">Template — Proposta de Auditoria</div>
+          <div class="dl-desc">Modelo padrão para propostas de auditoria.</div>
+          <div class="dl-foot"><span class="dl-label">Abrir no Google Slides</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M7 17L17 7"></path><polyline points="7,7 17,7 17,17"></polyline></svg></div>
+        </a>
+
+        <a class="dl-card" href="https://docs.google.com/presentation/d/1KxRq4QYBkL3kBM-fETj2PEs8BI6EAi0vM-oR95JzeBk/edit?usp=sharing" target="_blank" rel="noopener">
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="4" width="18" height="13"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+          <div class="dl-title">Template — Relatório Tributário</div>
+          <div class="dl-desc">Modelo padrão para relatórios tributários.</div>
+          <div class="dl-foot"><span class="dl-label">Abrir no Google Slides</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M7 17L17 7"></path><polyline points="7,7 17,7 17,17"></polyline></svg></div>
+        </a>
+
+        <a class="dl-card wide" href="https://docs.google.com/presentation/d/12wSrKtlbZt6cdkjZNN0Gq_ThTK6kOW8P/edit?usp=sharing&ouid=109318637552975857512&rtpof=true&sd=true" target="_blank" rel="noopener">
+          <div class="dl-wide-left">
+            <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="4" width="18" height="13"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+            <div class="dl-wide-text">
+              <div class="dl-title">Integração de Colaborador</div>
+              <div class="dl-desc">Apresentação de onboarding para novos colaboradores.</div>
+            </div>
+          </div>
+          <div class="dl-foot"><span class="dl-label">Abrir no Google Slides</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M7 17L17 7"></path><polyline points="7,7 17,7 17,17"></polyline></svg></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS -->
+  <section id="downloads">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">09 — Ativos</div>
+        <h2 class="section-title">Baixar o material da marca</h2>
+        <p class="section-lead">Logotipos, ícones e tipografia prontos para uso. Cada pacote inclui um guia rápido de aplicação.</p>
+      </div>
+
+      <div class="dl-grid">
+        <button class="dl-card" id="dl-logos">
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="3" width="18" height="18"></rect><circle cx="8.5" cy="8.5" r="2"></circle><polyline points="3,17 9,11 13,15 17,11 21,15"></polyline></svg></div>
+          <div class="dl-title">Logotipos</div>
+          <div class="dl-desc">3 variações em PNG — colorida, branca e preta — alta resolução.</div>
+          <div class="dl-foot"><span class="dl-label">Baixar .zip</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3v12"></path><polyline points="7,11 12,16 17,11"></polyline></svg></div>
+        </button>
+
+        <button class="dl-card" id="dl-icons">
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><polygon points="17.5,14 21,20.5 14,20.5"></polygon></svg></div>
+          <div class="dl-title">Ícones SVG</div>
+          <div class="dl-desc">Pacote completo de ícones de marca e interface, vetoriais e editáveis.</div>
+          <div class="dl-foot"><span class="dl-label">Baixar .zip</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3v12"></path><polyline points="7,11 12,16 17,11"></polyline></svg></div>
+        </button>
+
+        <button class="dl-card" id="dl-fonts">
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><polyline points="5,7 5,5 19,5 19,7"></polyline><line x1="12" y1="5" x2="12" y2="19"></line><line x1="9" y1="19" x2="15" y2="19"></line></svg></div>
+          <div class="dl-title">Tipografia</div>
+          <div class="dl-desc">Família Barlow (pesos 300–700) em .woff2 com CSS pronto para instalar.</div>
+          <div class="dl-foot"><span class="dl-label">Baixar .zip</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3v12"></path><polyline points="7,11 12,16 17,11"></polyline></svg></div>
+        </button>
+
+        <button class="dl-card wide" id="dl-all">
+          <div class="dl-wide-left">
+            <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><path d="M21 8v11a1 1 0 01-1 1H4a1 1 0 01-1-1V8"></path><path d="M2 4h20v4H2z"></path><line x1="10" y1="12" x2="14" y2="12"></line></svg></div>
+            <div class="dl-wide-text">
+              <div class="dl-title">Kit de marca completo</div>
+              <div class="dl-desc">Logotipos + ícones + tipografia em um único pacote.</div>
+            </div>
+          </div>
+          <div class="dl-foot"><span class="dl-label">Baixar tudo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3v12"></path><polyline points="7,11 12,16 17,11"></polyline><line x1="4" y1="21" x2="20" y2="21"></line></svg></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <img src="assets/logos/LogoFinalBranca.png" alt="BIOBRZ">
+      <span class="tag">"A BioBrz lê o que os outros não sabem ver."</span>
+    </div>
+  </footer>
+
+  <style>
+    .vchip { font-size:13px; font-weight:500; padding:7px 14px; border-radius:100px; background:var(--color-green-50); color:var(--color-green-500); border:1px solid var(--color-green-100); }
+    .vchip.off { background:#FBEDEB; color:var(--color-error); border-color:#F3D9D5; }
+    code { font-family:'SFMono-Regular',Menlo,monospace; font-size:0.9em; background:var(--color-green-50); padding:1px 6px; border-radius:3px; color:var(--color-green-500); }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="brand-site.js"></script>
+</body>
+</html>

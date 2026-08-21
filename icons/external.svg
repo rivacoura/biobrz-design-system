@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<svg id="Camada_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 20 20">
+  
+  <path d="M14,20H3c-1.65,0-3-1.35-3-3V6c0-1.65,1.35-3,3-3h7v2H3c-.55,0-1,.45-1,1v11c0,.55.45,1,1,1h11c.55,0,1-.45,1-1v-7h2v7c0,1.65-1.35,3-3,3Z"></path>
+  <polygon points="20 8 18 8 18 2 12 2 12 0 20 0 20 8"></polygon>
+  <rect x="4.88" y="5.88" width="16.5" height="2" transform="translate(-1.02 11.29) rotate(-45)"></rect>
+</svg>

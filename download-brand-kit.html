@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download BIOBRZ Brand Kit</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    .button {
+      background: #DDB830;
+      color: #000;
+      border: none;
+      padding: 16px 40px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 8px;
+      transition: opacity 200ms ease;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .button:hover {
+      opacity: 0.88;
+    }
+    .button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 40px;
+      padding: 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      line-height: 1.6;
+      display: none;
+    }
+    .status.loading {
+      background: rgba(221, 184, 48, 0.1);
+      color: #DDB830;
+      display: block;
+    }
+    .status.success {
+      background: rgba(62, 120, 83, 0.1);
+      color: #5A9070;
+      display: block;
+    }
+    .status.error {
+      background: rgba(229, 57, 53, 0.1);
+      color: #e53935;
+      display: block;
+    }
+    .content {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 32px;
+      margin: 40px 0;
+      text-align: left;
+    }
+    .content h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .content ul {
+      list-style: none;
+      padding: 0;
+    }
+    .content li {
+      padding: 8px 0;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+    }
+    .content li strong {
+      color: #fff;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BIOBRZ Brand Kit</h1>
+    <p class="subtitle">Kit completo de marca para publicação no GitHub</p>
+    
+    <div class="content">
+      <h2>📦 Conteúdo do pacote:</h2>
+      <ul>
+        <li><strong>Logotipos</strong> — 6 arquivos (3 PNG + 3 PDF)</li>
+        <li><strong>Ícones</strong> — 21 arquivos SVG</li>
+        <li><strong>Fontes</strong> — Barlow (18 arquivos TTF)</li>
+        <li><strong>Documentação</strong> — README em cada pasta</li>
+      </ul>
+    </div>
+
+    <button class="button" id="downloadBtn" onclick="generateAndDownload()">
+      ⬇️ Baixar ZIP
+    </button>
+
+    <div class="status" id="status"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>
+    async function generateAndDownload() {
+      const btn = document.getElementById('downloadBtn');
+      const status = document.getElementById('status');
+      
+      btn.disabled = true;
+      status.className = 'status loading';
+      status.innerHTML = '⏳ Gerando ZIP... Isso pode levar alguns segundos...';
+
+      try {
+        const zip = new JSZip();
+
+        // Função auxiliar para fetch
+        async function fetchFile(path) {
+          const response = await fetch(path);
+          if (!response.ok) throw new Error('Falha ao carregar: ' + path);
+          return await response.blob();
+        }
+
+        // Logotipos
+        status.innerHTML = '📁 Copiando logotipos...';
+        zip.file('Logotipos/logo-colorida.png', await fetchFile('assets/logos/LogoFinal.png'));
+        zip.file('Logotipos/logo-branca.png', await fetchFile('assets/logos/LogoFinalBranca.png'));
+        zip.file('Logotipos/logo-preta.png', await fetchFile('assets/logos/LogoFinalPreta.png'));
+        zip.file('Logotipos/logo-colorida.pdf', await fetchFile('logos/LogoFinal.pdf'));
+        zip.file('Logotipos/logo-branca.pdf', await fetchFile('logos/LogoFinalBranca.pdf'));
+        zip.file('Logotipos/logo-preta.pdf', await fetchFile('logos/LogoFinalPreto.pdf'));
+        zip.file('Logotipos/LEIA-ME.txt', 'BIOBRZ — Logotipos\n================================\n\nTrês versões oficiais:\n  • logo-colorida (fundo claro)\n  • logo-branca (fundo escuro/verde)\n  • logo-preta (mono/impressão)\n\nCada versão em PNG (raster) e PDF (vetorial).\nNunca distorça, gire, recolora ou aplique efeitos.');
+
+        // Ícones
+        status.innerHTML = '📁 Copiando ícones (21 arquivos)...';
+        const icons = ['arrow-right', 'arrow-up-right', 'building', 'chart-bar', 'check', 'close', 'document', 'external', 'instagram', 'linkedin', 'location', 'magnifier', 'mail', 'menu', 'phone', 'service-advisory', 'service-audit', 'service-tax', 'shield', 'star', 'user'];
+        for (const icon of icons) {
+          zip.file('Icones/' + icon + '.svg', await fetchFile('icons/' + icon + '.svg'));
+        }
+        zip.file('Icones/LEIA-ME.txt', 'Ícones BIOBRZ — 21 SVG\n================================\n\nTodos os ícones usam currentColor.\nDefina a cor via CSS no elemento pai.\n\n24×24, stroke-width 2, cantos retos (square/miter).');
+
+        // Fontes
+        status.innerHTML = '📁 Copiando fontes (18 arquivos)...';
+        const fonts = ['Barlow-Thin.ttf', 'Barlow-ThinItalic.ttf', 'Barlow-ExtraLight.ttf', 'Barlow-ExtraLightItalic.ttf', 'Barlow-Light.ttf', 'Barlow-LightItalic.ttf', 'Barlow-Regular.ttf', 'Barlow-Italic.ttf', 'Barlow-Medium.ttf', 'Barlow-MediumItalic.ttf', 'Barlow-SemiBold.ttf', 'Barlow-SemiBoldItalic.ttf', 'Barlow-Bold.ttf', 'Barlow-BoldItalic.ttf', 'Barlow-ExtraBold.ttf', 'Barlow-ExtraBoldItalic.ttf', 'Barlow-Black.ttf', 'Barlow-BlackItalic.ttf'];
+        
+        for (const font of fonts) {
+          zip.file('Tipografia-Barlow/' + font, await fetchFile('fonts/' + font));
+        }
+
+        // CSS
+        let css = '/* Barlow — BIOBRZ Design System */\n\n';
+        const weights = {'Thin': 100, 'ExtraLight': 200, 'Light': 300, 'Regular': 400, 'Medium': 500, 'SemiBold': 600, 'Bold': 700, 'ExtraBold': 800, 'Black': 900};
+        for (const font of fonts) {
+          const match = font.match(/Barlow-([A-Za-z]+)(Italic)?\.ttf/);
+          if (match) {
+            const weight = weights[match[1]] || 400;
+            const style = match[2] ? 'italic' : 'normal';
+            css += '@font-face {\n  font-family: "Barlow";\n  src: url("./' + font + '") format("truetype");\n  font-weight: ' + weight + ';\n  font-style: ' + style + ';\n}\n\n';
+          }
+        }
+        zip.file('Tipografia-Barlow/barlow.css', css);
+        zip.file('Tipografia-Barlow/LEIA-ME.txt', 'Tipografia BIOBRZ — Barlow\n================================\n\nFonte: Barlow (Jeremy Tribby)\nLicença: SIL Open Font License 1.1\n\nSistema de tipo único da marca.\nNunca combine com uma segunda família.\n\nPesos: 100, 200, 300, 400, 500, 600, 700, 800, 900\nCada peso em regular + itálico (18 arquivos total).\n\nUso: importe barlow.css ou instale os arquivos .ttf');
+
+        // README principal
+        zip.file('LEIA-ME.txt', 'BIOBRZ — Kit de Marca Completo\n================================\n\nConteúdo:\n  /Logotipos            — 3 variações (PNG + PDF)\n  /Icones               — 21 ícones SVG\n  /Tipografia-Barlow    — Fonte Barlow (18 arquivos)\n\nVersão: 1.0\nData: ' + new Date().toLocaleDateString('pt-BR') + '\n\n"Uma marca que não precisa ser explicada."\nBioBrz Consultores');
+
+        // Gerar ZIP
+        status.innerHTML = '📦 Compactando arquivo...';
+        const blob = await zip.generateAsync({type: 'blob'});
+
+        // Download
+        status.innerHTML = '⬇️ Iniciando download...';
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'BIOBRZ-Kit-Completo.zip';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+
+        status.className = 'status success';
+        status.innerHTML = '✅ Download iniciado com sucesso!<br>Arquivo: BIOBRZ-Kit-Completo.zip<br>Tamanho: ' + (blob.size / 1024 / 1024).toFixed(2) + ' MB';
+        
+      } catch (error) {
+        status.className = 'status error';
+        status.innerHTML = '❌ Erro: ' + error.message;
+        console.error(error);
+      } finally {
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
