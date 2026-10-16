@@ -208,6 +208,18 @@
     #ui-icon-grid .icon-box { color: var(--color-black); }
     .icon-name { font-size: 10px; color: var(--color-gray-400); letter-spacing: 0.02em; text-align: center; line-height: 1.2; }
 
+    .font-fallback { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; margin-top: 56px; padding: 36px; background: #fff; border: 1px solid var(--color-green-200); border-radius: 4px; align-items: start; }
+    .ff-title { font-size: 24px; font-weight: 500; margin: 0 0 14px; }
+    .ff-text p, .ff-text li { font-size: 15px; line-height: 1.6; color: var(--color-gray-600, #555); }
+    .ff-text ul { padding-left: 20px; margin: 12px 0; display: flex; flex-direction: column; gap: 8px; }
+    .ff-text strong { color: var(--color-black); font-weight: 600; }
+    .ff-note { font-size: 13px !important; font-style: italic; }
+    .ff-sample { background: var(--color-offwhite); border-radius: 4px; padding: 28px; font-family: Tahoma, Verdana, sans-serif; }
+    .ff-sample .lbl { font-family: inherit; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gray-400); }
+    .ff-aa { font-size: 72px; line-height: 1.1; margin: 10px 0; color: var(--color-green-500); }
+    .ff-body { font-size: 14px; line-height: 1.6; color: var(--color-gray-800); }
+    @media (max-width: 900px) { .font-fallback { grid-template-columns: 1fr; padding: 24px; } }
+
     /* ── DOWNLOADS ── */
     #downloads { background: var(--color-black); color: #fff; }
     #downloads .overline { color: var(--color-gold-500); }
@@ -514,9 +526,27 @@
         <aside class="type-aside">
           <div class="big">Aa</div>
           <div class="face">Barlow</div>
-          <div class="note">Geométrica sans-serif. Sistema de tipo único — nunca combine com uma segunda família. Pesos 300 a 700 disponíveis para download.</div>
+          <div class="note">Geométrica sans-serif. Sistema de tipo único — nunca combine com uma segunda família nas peças da marca. Pesos 300 a 700 disponíveis para download. Exceção: e-mails e ausência da Barlow usam Tahoma (veja abaixo).</div>
           <div class="glyphs">A B C D E F G &nbsp; a b c d e f g &nbsp; 0 1 2 3 4 5 &nbsp; R$ &amp; % @</div>
         </aside>
+      </div>
+
+      <div class="font-fallback">
+        <div class="ff-text">
+          <div class="overline" style="margin-bottom:10px;">Fonte de apoio</div>
+          <h3 class="ff-title">Tahoma — e-mails e fonte de sistema</h3>
+          <p>A Barlow é a fonte da marca em todas as peças. Há duas situações em que usamos a <strong>Tahoma</strong>:</p>
+          <ul>
+            <li><strong>Redação de e-mails.</strong> Toda comunicação por e-mail é escrita em Tahoma, pois ela está instalada na maioria dos computadores e garante a mesma aparência para quem recebe.</li>
+            <li><strong>Ausência da Barlow.</strong> Em qualquer documento ou ambiente onde a Barlow não esteja instalada ou disponível, a Tahoma entra como fonte de sistema substituta.</li>
+          </ul>
+          <p class="ff-note">Não misture as duas no mesmo texto: o e-mail é inteiro em Tahoma, e as peças da marca são inteiras em Barlow.</p>
+        </div>
+        <div class="ff-sample">
+          <div class="lbl">Tahoma · Regular</div>
+          <div class="ff-aa">Aa</div>
+          <div class="ff-body">Prezado(a), segue em anexo a proposta conforme alinhado em nossa reunião. Permaneço à disposição para quaisquer esclarecimentos.</div>
+        </div>
       </div>
     </div>
   </section>

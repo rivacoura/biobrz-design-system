@@ -4,7 +4,8 @@
 
 :root {
   /* ── Font Families ── */
-  --font-primary: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  --font-primary: 'Barlow', Tahoma, 'Helvetica Neue', Arial, sans-serif;
+  --font-email: Tahoma, Verdana, sans-serif; /* redação de e-mails */
 
   /* ── Font Sizes ── */
   --text-2xs:  0.625rem;   /*  10px */
