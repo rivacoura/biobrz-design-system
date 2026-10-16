@@ -112,6 +112,12 @@
       height: 200px; display: flex; align-items: center; justify-content: center; padding: 40px;
     }
     .logo-stage img { max-height: 64px; }
+    .sym-title { font-size: 22px; font-weight: 500; margin: 48px 0 8px; }
+    .sym-lead { font-size: 15px; color: var(--color-gray-600, #555); margin: 0 0 20px; max-width: 640px; line-height: 1.5; }
+    .sym-dl { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-green-500); text-decoration: none; }
+    .sym-dl:hover { text-decoration: underline; }
+    .logo-caption { gap: 6px 12px; flex-wrap: wrap; }
+    .sym-dl { white-space: nowrap; }
     .logo-stage.on-light { background: var(--color-offwhite); }
     .logo-stage.on-green { background: var(--color-green-500); }
     .logo-stage.on-black { background: var(--color-black); }
@@ -397,6 +403,23 @@
         <div class="logo-card">
           <div class="logo-stage on-light"><img src="assets/logos/LogoFinalPreta.png" alt="Logo preta"></div>
           <div class="logo-caption"><span class="name">Preta</span><span class="use">Mono / impressão</span></div>
+        </div>
+      </div>
+
+      <h3 class="sym-title">Símbolo</h3>
+      <p class="sym-lead">O símbolo isolado, para avatares, favicons e aplicações onde o logotipo completo não cabe. Mesmas regras de uso do logotipo.</p>
+      <div class="logo-grid">
+        <div class="logo-card">
+          <div class="logo-stage on-light"><img src="assets/logos/SimboloColorido.png" alt="Símbolo colorido"></div>
+          <div class="logo-caption"><span class="name">Colorido</span><span class="use">Fundo claro</span><a class="sym-dl" href="assets/logos/SimboloColorido.png" download>Baixar PNG ↓</a></div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-stage on-green"><img src="assets/logos/SimboloBranco.png" alt="Símbolo branco"></div>
+          <div class="logo-caption"><span class="name">Branco</span><span class="use">Fundo escuro / verde</span><a class="sym-dl" href="assets/logos/SimboloBranco.png" download>Baixar PNG ↓</a></div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-stage on-light"><img src="assets/logos/SimboloPreto.png" alt="Símbolo preto"></div>
+          <div class="logo-caption"><span class="name">Preto</span><span class="use">Mono / impressão</span><a class="sym-dl" href="assets/logos/SimboloPreto.png" download>Baixar PNG ↓</a></div>
         </div>
       </div>
 
@@ -757,7 +780,7 @@
         <button class="dl-card" id="dl-logos">
           <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="3" width="18" height="18"></rect><circle cx="8.5" cy="8.5" r="2"></circle><polyline points="3,17 9,11 13,15 17,11 21,15"></polyline></svg></div>
           <div class="dl-title">Logotipos</div>
-          <div class="dl-desc">3 variações em PNG — colorida, branca e preta — alta resolução.</div>
+          <div class="dl-desc">3 variações do logotipo e do símbolo isolado — colorida, branca e preta — em PNG e PDF.</div>
           <div class="dl-foot"><span class="dl-label">Baixar .zip</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3v12"></path><polyline points="7,11 12,16 17,11"></polyline></svg></div>
         </button>
 

@@ -204,6 +204,13 @@
       folder.file(pdfLabels[f], await fetchBlob('logos/' + f));
     }
     
+    // Símbolo isolado
+    const symFolder = folder.folder('Simbolo');
+    const symFiles = { 'SimboloColorido.png': 'simbolo-colorido.png', 'SimboloBranco.png': 'simbolo-branco.png', 'SimboloPreto.png': 'simbolo-preto.png' };
+    for (const f in symFiles) {
+      symFolder.file(symFiles[f], await fetchBlob('assets/logos/' + f));
+    }
+
     folder.file('LEIA-ME.txt', LICENSE_NOTE);
   }
 
@@ -293,7 +300,7 @@
         'BIOBRZ — Kit de Marca Completo\n' +
         '================================\n\n' +
         'Conteúdo:\n' +
-        '  /Logotipos        — 3 variações (colorida, branca, preta)\n' +
+        '  /Logotipos        — 3 variações (colorida, branca, preta) + /Simbolo\n' +
         '  /Icones           — ' + Object.keys(UI_ICONS).length + ' SVG (marca + interface)\n' +
         '  /Tipografia-Barlow — fonte Barlow + CSS\n\n' +
         '"Uma marca que não precisa ser explicada."\n');
