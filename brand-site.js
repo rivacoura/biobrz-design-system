@@ -357,6 +357,58 @@
     });
   }
 
+
+  /* ─────────────────────────────────────────────
+     ASSINATURA DE E-MAIL (canvas 1196 × 277)
+  ───────────────────────────────────────────── */
+  function setupSignature() {
+    const canvas = document.getElementById('sig-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const nome = document.getElementById('sig-nome');
+    const cargo = document.getElementById('sig-cargo');
+    const tel = document.getElementById('sig-tel');
+    const bg = new Image();
+    let bgReady = false;
+
+    // texto com espaçamento entre letras (tracking) em px
+    function line(txt, weight, size, tracking, x, baseline) {
+      ctx.font = weight + ' ' + size + 'px Barlow, Tahoma, sans-serif';
+      ctx.fillStyle = '#000';
+      ctx.textBaseline = 'alphabetic';
+      for (const ch of txt) {
+        ctx.fillText(ch, x, baseline);
+        x += ctx.measureText(ch).width + tracking;
+      }
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (bgReady) ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+      else { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+      line(nome.value.trim().toUpperCase(), 600, 44, 4.2, 466, 94);
+      line(cargo.value.trim().toUpperCase(), 500, 34, 3.6, 466, 142);
+      line(tel.value.trim(), 400, 35, 3.3, 466, 219);
+    }
+
+    bg.onload = function () { bgReady = true; render(); };
+    bg.src = 'assets/email/AssinaturaFundo.png';
+
+    [nome, cargo, tel].forEach(function (i) { i.addEventListener('input', render); });
+    const fonts = ['400 35px Barlow', '500 34px Barlow', '600 44px Barlow'].map(function (f) { return document.fonts.load(f); });
+    Promise.all(fonts).then(render, render);
+    render();
+
+    document.getElementById('sig-download').addEventListener('click', function () {
+      render();
+      canvas.toBlob(function (blob) {
+        const slug = (nome.value || 'colaborador').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        saveBlob(blob, 'assinatura-biobrz-' + (slug || 'colaborador') + '.png');
+        toast('Assinatura baixada');
+      }, 'image/png');
+    });
+  }
+
   async function init() {
     await loadIcons();
     renderColors();
@@ -364,6 +416,7 @@
     setupDownloads();
     setupCopyBlocks();
     setupNav();
+    setupSignature();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

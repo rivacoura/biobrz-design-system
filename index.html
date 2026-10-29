@@ -220,6 +220,20 @@
     .ff-body { font-size: 14px; line-height: 1.6; color: var(--color-gray-800); }
     @media (max-width: 900px) { .font-fallback { grid-template-columns: 1fr; padding: 24px; } }
 
+    /* ── ASSINATURA ── */
+    .sig-wrap { display: grid; grid-template-columns: 320px 1fr; gap: 36px; align-items: start; }
+    .sig-form { display: flex; flex-direction: column; gap: 16px; }
+    .sig-form label { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gray-600, #555); }
+    .sig-form input { font: inherit; font-size: 15px; letter-spacing: 0; text-transform: none; padding: 11px 12px; border: 1px solid var(--color-green-200); border-radius: 4px; background: #fff; color: var(--color-black); }
+    .sig-form input:focus { outline: 2px solid var(--color-green-500); outline-offset: 1px; }
+    .sig-btn { font: inherit; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 18px; background: var(--color-gold-500); color: var(--color-black); border: 0; border-radius: 4px; cursor: pointer; margin-top: 4px; }
+    .sig-btn:hover { background: var(--color-gold-400, #E8CA62); }
+    .sig-link { font-size: 13px; color: var(--color-green-500); }
+    .sig-preview { min-width: 0; }
+    .sig-preview canvas { width: 100%; height: auto; display: block; border: 1px solid var(--color-green-200); border-radius: 4px; background: #fff; }
+    .sig-hint { font-size: 13px; color: var(--color-gray-400); margin: 12px 0 0; }
+    @media (max-width: 900px) { .sig-wrap { grid-template-columns: 1fr; } }
+
     /* ── DOWNLOADS ── */
     #downloads { background: var(--color-black); color: #fff; }
     #downloads .overline { color: var(--color-gold-500); }
@@ -369,6 +383,7 @@
       <a class="nav-link" href="#voz">Voz</a>
       <a class="nav-link" href="#materiais">Materiais</a>
       <a class="nav-link" href="#papelaria">Papelaria</a>
+      <a class="nav-link" href="#assinatura">Assinatura</a>
       <a class="nav-cta" href="#downloads">
         Baixar ativos
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3v12"></path><polyline points="7,11 12,16 17,11"></polyline><line x1="4" y1="21" x2="20" y2="21"></line></svg>
@@ -793,6 +808,30 @@
           <div class="dl-desc">Arte final da pasta institucional para impressão.</div>
           <div class="dl-foot"><span class="dl-label">Baixar PDF</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3v12"></path><polyline points="7,11 12,16 17,11"></polyline></svg></div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL SIGNATURE -->
+  <section id="assinatura" style="background: #fff;">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">12 — Assinatura de e-mail</div>
+        <h2 class="section-title">Assinatura de e-mail</h2>
+        <p class="section-lead">Preencha os dados do colaborador, confira a prévia e baixe a imagem da assinatura em PNG (1196 × 277 px), pronta para inserir no e-mail.</p>
+      </div>
+      <div class="sig-wrap">
+        <form class="sig-form" id="sig-form" onsubmit="return false">
+          <label>Nome do colaborador<input type="text" id="sig-nome" value="Helena Pacheco" maxlength="40" autocomplete="off"></label>
+          <label>Cargo<input type="text" id="sig-cargo" value="Gerência" maxlength="40" autocomplete="off"></label>
+          <label>Telefone<input type="text" id="sig-tel" value="(61) 99317.8488" maxlength="22" autocomplete="off"></label>
+          <button type="button" class="sig-btn" id="sig-download">Baixar assinatura (PNG)</button>
+          <a class="sig-link" href="assets/email/AssinaturaFundo.png" download="assinatura-fundo-biobrz.png">Baixar apenas o fundo (sem texto)</a>
+        </form>
+        <div class="sig-preview">
+          <canvas id="sig-canvas" width="1196" height="277" aria-label="Prévia da assinatura de e-mail"></canvas>
+          <p class="sig-hint">Nome e cargo saem em maiúsculas automaticamente. Use o telefone no formato (DDD) 9XXXX.XXXX.</p>
+        </div>
       </div>
     </div>
   </section>
